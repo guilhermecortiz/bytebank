@@ -3,7 +3,12 @@ import '../../components/editor.dart';
 import 'lista.dart';
 
 const _tituloAppBar = 'Criando Transferência';
-const _textButton = 'Confirmar';
+const _textButtonConfirmar = 'Confirmar';
+
+const _dicaCampoNumeroConta = '000';
+const _dicaCampoValor = '0.00';
+const _rotuloCampoNumeroConta = 'Número da conta';
+const _rotuloCampoValor = 'Valor';
 
 const _textSuccessSnakBar = 'Transferencia realizada com sucesso.';
 
@@ -24,23 +29,24 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(_tituloAppBar),
+          title: Text(_tituloAppBar.toString()),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Editor(
-                  controlador: _controladorCampoNumeroConta,
-                  dica: '000',
-                  rotulo: 'Número da conta'),
+                controlador: _controladorCampoNumeroConta,
+                dica: _dicaCampoNumeroConta,
+                rotulo: _rotuloCampoNumeroConta,
+              ),
               Editor(
-                dica: '0.00',
+                dica: _dicaCampoValor,
                 controlador: _controladorCampoValor,
-                rotulo: 'Valor',
+                rotulo: _rotuloCampoValor,
                 icone: Icons.monetization_on,
               ),
               ElevatedButton(
-                child: Text(_textButton),
+                child: Text(_textButtonConfirmar.toString()),
                 onPressed: () => {
                   _criaTranferencia(context),
                 },
